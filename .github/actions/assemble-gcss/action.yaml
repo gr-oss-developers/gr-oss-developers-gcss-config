@@ -7,9 +7,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout repositories configuration
-      uses: actions/checkout@v4
-
     - name: Checkout code configuration
       uses: actions/checkout@v4
       with:

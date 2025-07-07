@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     name: WIP
     steps:
+      - name: Checkout repositories configuration
+        uses: actions/checkout@v4
+
       - name: Assemble GCSS
         uses: ./.github/actions/assemble-gcss
