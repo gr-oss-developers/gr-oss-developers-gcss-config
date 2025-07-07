@@ -15,7 +15,7 @@ jobs:
           ref: main
 
       - name: Create dir structure
-        run: mkdir -P feature/github-repo-provisioning/repo_configs/dev/gr-oss-developers
+        run: mkdir -p feature/github-repo-provisioning/repo_configs/dev/gr-oss-developers
 
       - name: Checkout code configuration
         uses: actions/checkout@v4
