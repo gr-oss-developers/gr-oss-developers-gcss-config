@@ -1,0 +1,12 @@
+name: WIP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  wip:
+    runs-on: ubuntu-latest
+    name: WIP
+    steps:
+      - name: Assemble GCSS
+        uses: ./.github/actions/assemble-gcss
