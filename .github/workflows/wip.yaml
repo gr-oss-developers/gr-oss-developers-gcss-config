@@ -8,25 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     name: WIP
     steps:
-      - name: Checkout repositories configuration
+      - name: Checkout code configuration
         uses: actions/checkout@v4
+        with:
+          repository: gr-oss-developers/github-configuration-self-service
+          ref: main
 
       - name: Debug
         run: |
           echo ${GITHUB_WORKSPACE}
           ls -la
 
-      - name: Checkout code configuration
-        uses: actions/checkout@v4
-        with:
-          repository: gr-oss-developers/github-configuration-self-service
-          ref: main
-          path: gcss
-
-      - name: Debug
-        run: |
-          echo ${GITHUB_WORKSPACE}
-          ls -la gcss
+#      - name: Checkout repositories configuration
+#        uses: actions/checkout@v4
 
 #      - name: Assemble GCSS
 #        uses: ./.github/actions/assemble-gcss
