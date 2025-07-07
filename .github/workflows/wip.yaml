@@ -11,5 +11,10 @@ jobs:
       - name: Checkout repositories configuration
         uses: actions/checkout@v4
 
-      - name: Assemble GCSS
-        uses: ./.github/actions/assemble-gcss
+      - name: Debug
+        run: |
+          echo ${GITHUB_WORKSPACE}
+          ls -la
+
+#      - name: Assemble GCSS
+#        uses: ./.github/actions/assemble-gcss
