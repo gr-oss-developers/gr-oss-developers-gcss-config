@@ -10,11 +10,10 @@ on:
 jobs:
   reusable:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
-    permissions:
-      contents: write
-      pull-requests: write
-    secrets: inherit
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
       owner: gr-oss-developers
       gcss_ref: main
+    secrets:
+        APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
