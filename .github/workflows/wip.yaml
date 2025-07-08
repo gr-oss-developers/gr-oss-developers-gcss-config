@@ -19,19 +19,19 @@ jobs:
           ref: main
 
       - name: Create dir structure
-        run: mkdir -p feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
+        run: mkdir -p feature/github-repo-provisioning/repo_configs/${env.ENVIRONMENT}/${env.ORG}
 
       - name: Checkout code configuration
         uses: actions/checkout@v4
         with:
-          path: feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
+          path: feature/github-repo-provisioning/repo_configs/${env.ENVIRONMENT}/${env.ORG}
 
       - name: Debug
         run: |
           echo ${GITHUB_WORKSPACE}
           ls -la
           ls -la feature/github-repo-provisioning/repo_configs
-          ls -la feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
+          ls -la feature/github-repo-provisioning/repo_configs/${env.ENVIRONMENT}/${env.ORG}
 
 #      - name: Checkout repositories configuration
 #        uses: actions/checkout@v4
