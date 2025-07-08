@@ -30,6 +30,7 @@ jobs:
         run: |
           echo ${GITHUB_WORKSPACE}
           ls -la
+          ls -la feature/github-repo-provisioning/repo_configs
           ls -la feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
 
 #      - name: Checkout repositories configuration
