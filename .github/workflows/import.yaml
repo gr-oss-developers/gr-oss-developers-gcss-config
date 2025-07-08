@@ -7,6 +7,10 @@ on:
         description: 'The name of the repository to import'
         required: true
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   reusable:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
@@ -14,9 +18,6 @@ jobs:
       repo_name: ${{ github.event.inputs.repo_name }}
       owner: gr-oss-developers
       gcss_ref: main
-    permissions:
-      contents: write
-      pull-requests: write
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
         gh_token: ${{ secrets.GITHUB_TOKEN }}
