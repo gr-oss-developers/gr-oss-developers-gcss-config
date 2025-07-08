@@ -3,6 +3,10 @@ name: WIP
 on:
   workflow_dispatch:
 
+env:
+  ENVIRONMENT: dev
+  ORG: gr-oss-developers
+
 jobs:
   wip:
     runs-on: ubuntu-latest
@@ -15,18 +19,18 @@ jobs:
           ref: main
 
       - name: Create dir structure
-        run: mkdir -p feature/github-repo-provisioning/repo_configs/dev/gr-oss-developers
+        run: mkdir -p feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
 
       - name: Checkout code configuration
         uses: actions/checkout@v4
         with:
-          path: feature/github-repo-provisioning/repo_configs/dev/gr-oss-developers
+          path: feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
 
       - name: Debug
         run: |
           echo ${GITHUB_WORKSPACE}
           ls -la
-          ls -la feature/github-repo-provisioning/repo_configs/dev/gr-oss-developers
+          ls -la feature/github-repo-provisioning/repo_configs/${ENVIRONMENT}/${ORG}
 
 #      - name: Checkout repositories configuration
 #        uses: actions/checkout@v4
