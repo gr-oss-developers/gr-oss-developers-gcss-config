@@ -14,6 +14,9 @@ jobs:
       repo_name: ${{ github.event.inputs.repo_name }}
       owner: gr-oss-developers
       gcss_ref: main
+    permissions:
+      contents: write
+      pull-requests: write
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
         gh_token: ${{ secrets.GITHUB_TOKEN }}
