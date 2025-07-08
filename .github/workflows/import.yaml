@@ -15,5 +15,5 @@ jobs:
       owner: gr-oss-developers
       gcss_ref: main
     secrets:
-        APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
