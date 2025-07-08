@@ -8,6 +8,8 @@ env:
   ORG: gr-oss-developers
 
 jobs:
+  reusable:
+    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/wip.yaml@main
   wip:
     runs-on: ubuntu-latest
     name: WIP
@@ -32,7 +34,6 @@ jobs:
           ls -la
           ls -la feature/github-repo-provisioning/repo_configs
           ls -la feature/github-repo-provisioning/repo_configs/${{ env.ENVIRONMENT }}/${{ env.ORG }}
-
 #      - name: Checkout repositories configuration
 #        uses: actions/checkout@v4
 
