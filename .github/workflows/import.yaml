@@ -10,6 +10,9 @@ on:
 jobs:
   reusable:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
+    permissions:
+      contents: write
+      pull-requests: write
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
       owner: gr-oss-developers
