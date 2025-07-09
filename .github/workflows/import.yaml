@@ -30,8 +30,6 @@ jobs:
       - name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
 
-      - run: gh auth status
-
       - name: Checkout GCSS
         uses: actions/checkout@v4
         with:
