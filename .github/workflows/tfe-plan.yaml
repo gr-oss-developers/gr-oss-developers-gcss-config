@@ -1,0 +1,14 @@
+name: Trigger TFE speculative plan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-tfe-plan:
+    runs-on: ubuntu-latest
+    name: Trigger TFE Plan
+    environment: tfe-plan
+    steps:
+      - name: Debug
+        uses: crazy-max/ghaction-dump-context@v2
