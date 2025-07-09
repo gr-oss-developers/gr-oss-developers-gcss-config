@@ -11,8 +11,10 @@ jobs:
   promote:
     if: github.event.pull_request.merged == true
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/promote-imported-configs.yaml@main
-    secrets: inherit
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
       gcss_ref: main
       pr_number: ${{ github.event.pull_request.number }}
+    secrets:
+      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
