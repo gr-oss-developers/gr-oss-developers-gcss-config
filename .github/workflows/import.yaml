@@ -7,10 +7,6 @@ on:
         description: 'The name of the repository to import'
         required: true
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
 #  reusable:
 #    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
@@ -45,10 +41,10 @@ jobs:
 
       - name: Checkout configuration
         uses: actions/checkout@v4
-#        with:
+        with:
 #          path: feature/github-repo-provisioning/gcss_config
 #          ref: ${{ github.sha }}
-#          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Dump context
 #        uses: crazy-max/ghaction-dump-context@v2
@@ -107,7 +103,6 @@ jobs:
       - name: Configure git
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OTHER: ${{ github.token }}
         run: |
           ls -la
           git config --global user.name 'github-actions[bot]'
@@ -118,9 +113,4 @@ jobs:
           git add .
           git commit -m "Test"
           git push origin test-branch
-          if [[ "$OTHER" == "$GH_TOKEN" ]]; then
-            echo "match"
-          else
-            echo "do not match"
-          fi
           gh pr create --title "Test" --body "This is an automated PR." --base ${{ github.ref_name }} --head test-branch
