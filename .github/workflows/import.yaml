@@ -97,9 +97,6 @@ jobs:
 #        if: always()
 #        uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Debug
-        run: echo ${{ github.token == secrets.GITHUB_TOKEN }}
-
       - name: Configure git
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
