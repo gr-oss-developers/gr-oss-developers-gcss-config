@@ -48,7 +48,7 @@ jobs:
         with:
 #          path: feature/github-repo-provisioning/gcss_config
 #          ref: ${{ github.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+#          token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Dump context
 #        uses: crazy-max/ghaction-dump-context@v2
