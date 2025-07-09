@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  reusable:
+  import-repo:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
