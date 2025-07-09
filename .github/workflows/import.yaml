@@ -12,12 +12,71 @@ permissions:
   pull-requests: write
 
 jobs:
-  reusable:
-    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
-    with:
-      repo_name: ${{ github.event.inputs.repo_name }}
-      owner: gr-oss-developers
-      gcss_ref: main
-    secrets:
-        app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-        gh_token: ${{ secrets.GITHUB_TOKEN }}
+#  reusable:
+#    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
+#    with:
+#      repo_name: ${{ github.event.inputs.repo_name }}
+#      owner: gr-oss-developers
+#      gcss_ref: main
+#    secrets:
+#        app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+#        gh_token: ${{ secrets.GITHUB_TOKEN }}
+
+  import-repo:
+    runs-on: ubuntu-latest
+    name: Import repository
+    environment: import
+    steps:
+      - name: Checkout GCSS
+        uses: actions/checkout@v4
+        with:
+          repository: gr-oss-developers/github-configuration-self-service # TODO
+          ref: main
+
+      - name: Checkout configuration
+        uses: actions/checkout@v4
+        with:
+          path: feature/github-repo-provisioning/gcss_config
+          ref: ${{ github.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Just
+        uses: extractions/setup-just@v2
+        with:
+          just-version: '1.4.0'
+
+      - name: Generate a token
+        uses: actions/create-github-app-token@v1
+        id: generate-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: "gr-oss-developers"
+
+      - name: Setup vars
+        id: setup-vars
+        run: |
+          date_suffix=$(date +%Y%m%d)
+          echo "full_repo_name=gr-oss-developers/${{ github.event.inputs.repo_name }}" >> $GITHUB_OUTPUT
+          echo "automation_branch_name=import/gr-oss-developers/${{ github.event.inputs.repo_name }}/$date_suffix" >> $GITHUB_OUTPUT # TODO fix hardcoded environment directory 
+
+      - name: Import repo
+        working-directory: feature/github-repo-importer
+        run: just import-repo ${{ steps.setup-vars.outputs.full_repo_name }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+      - name: Handle configuration files
+        uses: ./.github/actions/compare
+        with:
+          working-directory: feature/github-repo-importer
+          source-directory: "../github-repo-provisioning/gcss_config/importer_tmp_dir/"
+          target-directory: "../github-repo-provisioning/gcss_config/"
+
+      - name: Create Pull Request
+        uses: ./.github/actions/pr-bot
+        with:
+          branch-name: ${{ steps.setup-vars.outputs.automation_branch_name }}
+          pr-title: "Import ${{ steps.setup-vars.outputs.full_repo_name }}" # TODO fix hardcoded environment directory
+          commit-message: "Auto-generated changes. Import ${{ steps.setup-vars.outputs.full_repo_name }} repository" # TODO fix hardcoded environment directory
+          github-token: ${{ secrets.GITHUB_TOKEN }}
