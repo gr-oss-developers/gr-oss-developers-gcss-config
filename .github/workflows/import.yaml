@@ -22,9 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Import repository
     environment: import
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
 #      - name: Dump context
 #        uses: crazy-max/ghaction-dump-context@v2
