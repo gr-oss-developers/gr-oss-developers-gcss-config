@@ -21,7 +21,7 @@ is_template: false
 archived: false
 has_discussions: false
 topics:
-    - example
-    - github
-    - terraform
+  - example
+  - github
+  - terraform
 vulnerability_alerts_enabled: false
