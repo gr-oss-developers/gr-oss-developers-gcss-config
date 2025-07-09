@@ -27,73 +27,88 @@ jobs:
     name: Import repository
     environment: import
     steps:
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v2
+#      - name: Dump context
+#        uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Checkout GCSS
-        uses: actions/checkout@v4
-        with:
-          repository: gr-oss-developers/github-configuration-self-service # TODO
-          ref: main
-          persist-credentials: false
+#      - name: Checkout GCSS
+#        uses: actions/checkout@v4
+#        with:
+#          repository: gr-oss-developers/github-configuration-self-service # TODO
+#          ref: main
+#          persist-credentials: false
 
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v2
+#      - name: Dump context
+#        uses: crazy-max/ghaction-dump-context@v2
 
       - name: Checkout configuration
         uses: actions/checkout@v4
-        with:
-          path: feature/github-repo-provisioning/gcss_config
-          ref: ${{ github.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          path: feature/github-repo-provisioning/gcss_config
+#          ref: ${{ github.sha }}
+#          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v2
+#      - name: Dump context
+#        uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Setup Just
-        uses: extractions/setup-just@v2
-        with:
-          just-version: '1.4.0'
+#      - name: Setup Just
+#        uses: extractions/setup-just@v2
+#        with:
+#          just-version: '1.4.0'
 
-      - name: Generate a token
-        uses: actions/create-github-app-token@v1
-        id: generate-token
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          owner: "gr-oss-developers"
+#      - name: Generate a token
+#        uses: actions/create-github-app-token@v1
+#        id: generate-token
+#        with:
+#          app-id: ${{ vars.APP_ID }}
+#          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+#          owner: "gr-oss-developers"
 
-      - name: Setup vars
-        id: setup-vars
+#      - name: Setup vars
+#        id: setup-vars
+#        run: |
+#          date_suffix=$(date +%Y%m%d)
+#          echo "full_repo_name=gr-oss-developers/${{ github.event.inputs.repo_name }}" >> $GITHUB_OUTPUT
+#          echo "automation_branch_name=import/gr-oss-developers/${{ github.event.inputs.repo_name }}/$date_suffix" >> $GITHUB_OUTPUT # TODO fix hardcoded environment directory
+
+#      - name: Import repo
+#        working-directory: feature/github-repo-importer
+#        run: just import-repo ${{ steps.setup-vars.outputs.full_repo_name }}
+#        env:
+#          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+#      - name: Handle configuration files
+#        uses: ./.github/actions/compare
+#        with:
+#          working-directory: feature/github-repo-importer
+#          source-directory: "../github-repo-provisioning/gcss_config/importer_tmp_dir/"
+#          target-directory: "../github-repo-provisioning/gcss_config/"
+
+#      - name: Dump context
+#        uses: crazy-max/ghaction-dump-context@v2
+
+#      - name: Create Pull Request
+#        uses: ./.github/actions/pr-bot
+#        with:
+#          branch-name: ${{ steps.setup-vars.outputs.automation_branch_name }}
+#          pr-title: "Import ${{ steps.setup-vars.outputs.full_repo_name }}" # TODO fix hardcoded environment directory
+#          commit-message: "Auto-generated changes. Import ${{ steps.setup-vars.outputs.full_repo_name }} repository" # TODO fix hardcoded environment directory
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Dump context
+#        if: always()
+#        uses: crazy-max/ghaction-dump-context@v2
+
+      - name: Configure git
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          date_suffix=$(date +%Y%m%d)
-          echo "full_repo_name=gr-oss-developers/${{ github.event.inputs.repo_name }}" >> $GITHUB_OUTPUT
-          echo "automation_branch_name=import/gr-oss-developers/${{ github.event.inputs.repo_name }}/$date_suffix" >> $GITHUB_OUTPUT # TODO fix hardcoded environment directory 
-
-      - name: Import repo
-        working-directory: feature/github-repo-importer
-        run: just import-repo ${{ steps.setup-vars.outputs.full_repo_name }}
-        env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-
-      - name: Handle configuration files
-        uses: ./.github/actions/compare
-        with:
-          working-directory: feature/github-repo-importer
-          source-directory: "../github-repo-provisioning/gcss_config/importer_tmp_dir/"
-          target-directory: "../github-repo-provisioning/gcss_config/"
-
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v2
-
-      - name: Create Pull Request
-        uses: ./.github/actions/pr-bot
-        with:
-          branch-name: ${{ steps.setup-vars.outputs.automation_branch_name }}
-          pr-title: "Import ${{ steps.setup-vars.outputs.full_repo_name }}" # TODO fix hardcoded environment directory
-          commit-message: "Auto-generated changes. Import ${{ steps.setup-vars.outputs.full_repo_name }} repository" # TODO fix hardcoded environment directory
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Dump context
-        if: always()
-        uses: crazy-max/ghaction-dump-context@v2
+          ls -la
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout -b test-branch
+          touch test.yaml
+          echo "name: Test" > test.yaml
+          git add .
+          git commit -m "Test"
+          git push origin test-branch
+          gh pr create --title "Test" --body "This is an automated PR." --base ${{ github.ref_name }} --head test-branch
