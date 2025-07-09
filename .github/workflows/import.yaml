@@ -27,6 +27,9 @@ jobs:
     name: Import repository
     environment: import
     steps:
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+
       - name: Checkout GCSS
         uses: actions/checkout@v4
         with:
@@ -34,12 +37,18 @@ jobs:
           ref: main
           persist-credentials: false
 
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+
       - name: Checkout configuration
         uses: actions/checkout@v4
         with:
           path: feature/github-repo-provisioning/gcss_config
           ref: ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
 
       - name: Setup Just
         uses: extractions/setup-just@v2
@@ -74,6 +83,9 @@ jobs:
           source-directory: "../github-repo-provisioning/gcss_config/importer_tmp_dir/"
           target-directory: "../github-repo-provisioning/gcss_config/"
 
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+
       - name: Create Pull Request
         uses: ./.github/actions/pr-bot
         with:
@@ -81,3 +93,6 @@ jobs:
           pr-title: "Import ${{ steps.setup-vars.outputs.full_repo_name }}" # TODO fix hardcoded environment directory
           commit-message: "Auto-generated changes. Import ${{ steps.setup-vars.outputs.full_repo_name }} repository" # TODO fix hardcoded environment directory
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
