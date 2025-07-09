@@ -15,4 +15,4 @@ jobs:
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
       gcss_ref: main
-      pull_request_number: ${{ github.event.pull_request.number }}
+      pr_number: ${{ github.event.pull_request.number }}
