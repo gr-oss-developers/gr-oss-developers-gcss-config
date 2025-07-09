@@ -99,8 +99,8 @@ jobs:
 #        uses: crazy-max/ghaction-dump-context@v2
 
       - name: Configure git
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           ls -la
           git config --global user.name 'github-actions[bot]'
