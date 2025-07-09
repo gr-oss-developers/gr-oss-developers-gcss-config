@@ -37,8 +37,6 @@ jobs:
           ref: main
           persist-credentials: false
 
-      - run: gh auth status
-
       - name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
 
@@ -48,8 +46,6 @@ jobs:
           path: feature/github-repo-provisioning/gcss_config
           ref: ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: gh auth status
 
       - name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
@@ -90,8 +86,6 @@ jobs:
       - name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
 
-      - run: gh auth status
-
       - name: Create Pull Request
         uses: ./.github/actions/pr-bot
         with:
@@ -99,9 +93,6 @@ jobs:
           pr-title: "Import ${{ steps.setup-vars.outputs.full_repo_name }}" # TODO fix hardcoded environment directory
           commit-message: "Auto-generated changes. Import ${{ steps.setup-vars.outputs.full_repo_name }} repository" # TODO fix hardcoded environment directory
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - if: always()
-        run: gh auth status
 
       - name: Dump context
         if: always()
