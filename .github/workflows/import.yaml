@@ -42,10 +42,10 @@ jobs:
 
       - name: Checkout configuration
         uses: actions/checkout@v4
-#        with:
+        with:
 #          path: feature/github-repo-provisioning/gcss_config
 #          ref: ${{ github.sha }}
-#          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
 
 #      - name: Dump context
 #        uses: crazy-max/ghaction-dump-context@v2
