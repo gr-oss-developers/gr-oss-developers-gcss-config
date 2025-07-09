@@ -107,6 +107,7 @@ jobs:
       - name: Configure git
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OTHER: ${{ github.token }}
         run: |
           ls -la
           git config --global user.name 'github-actions[bot]'
@@ -117,5 +118,9 @@ jobs:
           git add .
           git commit -m "Test"
           git push origin test-branch
-          echo ${{ github.token == $GH_TOKEN }}
+          if [[ "$OTHER" == "$GH_TOKEN" ]]; then
+            echo "match"
+          else
+            echo "do not match"
+          fi
           gh pr create --title "Test" --body "This is an automated PR." --base ${{ github.ref_name }} --head test-branch
