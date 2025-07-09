@@ -95,4 +95,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Dump context
+        if: always()
         uses: crazy-max/ghaction-dump-context@v2
