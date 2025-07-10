@@ -1,0 +1,16 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  terraform-plan:
+    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/tf-plan.yaml@main
+    with:
+      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
+      gcss_ref: main
+    secrets:
+      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      tfc_token: ${{ secrets.TFC_TOKEN }}
