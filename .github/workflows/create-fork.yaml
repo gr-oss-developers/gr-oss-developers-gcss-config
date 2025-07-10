@@ -12,7 +12,8 @@ on:
       default_branch_only:
         description: "Whether to fork only the default branch (true/false)"
         required: false
-        default: "true"
+        default: true
+        type: boolean
 
 jobs:
   create-fork:
