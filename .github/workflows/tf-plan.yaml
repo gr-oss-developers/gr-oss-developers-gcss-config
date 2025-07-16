@@ -2,14 +2,26 @@ name: Terraform Plan
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   terraform-plan:
-    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/tf-plan.yaml@main
-    with:
-      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: main
-    secrets:
-      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
-      tfc_token: ${{ secrets.TFC_TOKEN }}
+#    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/tf-plan.yaml@main
+#    with:
+#      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
+#      gcss_ref: main
+#    secrets:
+#      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+#      gh_token: ${{ secrets.GITHUB_TOKEN }}
+#      tfc_token: ${{ secrets.TFC_TOKEN }}
+    runs-on: ubuntu-latest
+    environment: promote
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout configuration repo
+        uses: actions/checkout@v4
+        with:
+          path: feature/github-repo-provisioning/gcss_config
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
