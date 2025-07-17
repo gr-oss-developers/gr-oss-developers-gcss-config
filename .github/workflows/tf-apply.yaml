@@ -13,6 +13,5 @@ jobs:
       commit_sha: ${{ github.sha }}
       gcss_ref: main
     secrets:
-      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
       gh_token: ${{ secrets.GITHUB_TOKEN }}
       tfc_token: ${{ secrets.TFC_TOKEN }}
