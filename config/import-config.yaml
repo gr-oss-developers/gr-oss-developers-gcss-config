@@ -9,7 +9,7 @@
 # rules with app integration that is not handled properly by the importer
 ignored_repos:
   - "gr-oss-developers/github-configuration-self-service"
-  - - "gr-oss-developers/gr-oss-developers-gcss-config"
+  - "gr-oss-developers/gr-oss-developers-gcss-config"
 
 # List of repositories to be imported by the importer.
 #
