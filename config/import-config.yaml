@@ -8,14 +8,8 @@
 # Ignoring charts, datahub, DotNetPerfMonitor, NuPerfMonitor, trino, waltz because they are using branch protection
 # rules with app integration that is not handled properly by the importer
 ignored_repos:
-  - "G-Research/github-configuration-self-service"
-  - "G-Research/davidl-userns-notes"
-  - "G-Research/charts"
-  - "G-Research/datahub"
-  - "G-Research/DotNetPerfMonitor"
-  - "G-Research/NuPerfMonitor"
-  - "G-Research/trino"
-  - "G-Research/waltz"
+  - "gr-oss-developers/github-configuration-self-service"
+  - - "gr-oss-developers/gr-oss-developers-gcss-config"
 
 # List of repositories to be imported by the importer.
 #
