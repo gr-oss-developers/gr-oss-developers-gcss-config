@@ -22,6 +22,5 @@ jobs:
       fork_name: ${{ github.event.inputs.fork_name }}
       default_branch_only: ${{ github.event.inputs.default_branch_only }}
       fork_to_org: gr-oss-developers
-#      gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
