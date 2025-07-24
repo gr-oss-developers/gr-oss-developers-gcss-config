@@ -1,4 +1,4 @@
-name: "Terraform Cloud Drift Check"
+name: "Drift Check"
 
 on:
 #  schedule:
