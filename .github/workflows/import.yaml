@@ -12,7 +12,6 @@ jobs:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
-      owner: gr-oss-developers
       gcss_ref: main
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

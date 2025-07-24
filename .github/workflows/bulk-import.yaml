@@ -7,7 +7,6 @@ jobs:
   bulk-import-repos:
     uses: gr-oss-developers/github-configuration-self-service/.github/workflows/bulk-import.yaml@main
     with:
-      owner: gr-oss-developers
       gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

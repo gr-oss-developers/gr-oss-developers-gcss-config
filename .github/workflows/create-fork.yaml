@@ -21,6 +21,5 @@ jobs:
       upstream_repo: ${{ github.event.inputs.upstream_repo }}
       fork_name: ${{ github.event.inputs.fork_name }}
       default_branch_only: ${{ github.event.inputs.default_branch_only }}
-      fork_to_org: gr-oss-developers
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
