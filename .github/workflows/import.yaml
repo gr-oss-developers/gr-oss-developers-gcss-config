@@ -9,9 +9,9 @@ on:
 
 jobs:
   import-repo:
-    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@main
+    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/import.yaml@second-main
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
-      gcss_ref: main
+      gcss_ref: second-main
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
