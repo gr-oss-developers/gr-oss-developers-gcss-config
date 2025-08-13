@@ -8,6 +8,6 @@ on:
 jobs:
   drift-check:
     secrets: inherit
-    uses: gr-oss-developers/github-configuration-self-service/.github/workflows/drift-check.yaml@main
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@main
     with:
       gcss_ref: main
