@@ -7,7 +7,8 @@ on:
 
 jobs:
   drift-check:
-    secrets: inherit
-    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@main
+    secrets:
+      tfc_token: ${{ secrets.TFC_TOKEN }}
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@fix-providing-secrets
     with:
       gcss_ref: main
