@@ -1,5 +1,5 @@
 description: Repository 5 created with Terraform
-visibility: public
+visibility: private
 homepage_url: ""
 default_branch: main
 has_issues: true
