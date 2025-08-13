@@ -8,6 +8,6 @@ on:
 jobs:
   drift-check:
     secrets: inherit
-    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@fix-providing-secrets
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@main
     with:
       gcss_ref: main
