@@ -5,8 +5,8 @@ on:
 
 jobs:
   bulk-import-repos:
-    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@remove-unused-outputs
+    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@main
     with:
-      gcss_ref: remove-unused-outputs
+      gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

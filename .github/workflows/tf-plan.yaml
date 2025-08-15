@@ -5,10 +5,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@remove-unused-outputs
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: remove-unused-outputs
+      gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
       gh_token: ${{ secrets.GITHUB_TOKEN }}

@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@remove-unused-outputs
+    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@main
     with:
       commit_sha: ${{ github.sha }}
-      gcss_ref: remove-unused-outputs
+      gcss_ref: main
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
       tfc_token: ${{ secrets.TFC_TOKEN }}
