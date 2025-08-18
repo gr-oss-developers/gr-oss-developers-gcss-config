@@ -10,12 +10,11 @@ on:
 jobs:
   promote:
     if: github.event.pull_request.merged == true
-    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@debug
+    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@main
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: debug
+      gcss_ref: main
       pr_number: ${{ github.event.pull_request.number }}
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
       tfc_token: ${{ secrets.TFC_TOKEN }}
