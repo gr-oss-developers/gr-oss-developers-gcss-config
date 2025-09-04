@@ -4,6 +4,10 @@ on:
   pull_request_target:
 
 jobs:
+  insecure:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ secrets.NOT_SECRET }}
   terraform-plan:
     uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
     with:
