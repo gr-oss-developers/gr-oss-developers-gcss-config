@@ -5,7 +5,7 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
+    uses: mekanix/github-terraformer/.github/workflows/tf-plan.yaml@context
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
       gcss_ref: main
