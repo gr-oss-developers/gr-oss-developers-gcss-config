@@ -7,7 +7,7 @@ jobs:
   terraform-plan:
     uses: mekanix/github-terraformer/.github/workflows/tf-plan.yaml@context
     with:
-      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
+      commit_sha: ${{ github.event.pull_request.head.sha }}
       gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
