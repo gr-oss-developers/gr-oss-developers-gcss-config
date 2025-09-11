@@ -1,50 +1,15 @@
 name: Terraform Plan
 
 on:
-  pull_request_target:
+  pull_request:
 
 jobs:
   terraform-plan:
-    #    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
-    #    with:
-    #      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-    #      gcss_ref: main
-    #    secrets:
-    #      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-    #      gh_token: ${{ secrets.GITHUB_TOKEN }}
-    #      tfc_token: ${{ secrets.TFC_TOKEN }}
-    runs-on: ubuntu-latest
-    environment: promote
-    permissions:
-      pull-requests: write
-      contents: read
-    steps:
-      - name: Generate a token
-        uses: actions/create-github-app-token@v2
-        id: generate-token
+        uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
         with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          owner: ${{ github.repository_owner }}
-
-      - name: Checkout GCSS
-        uses: actions/checkout@v4
-        with:
-          repository: G-Research/github-terraformer
-          ref: main
-          persist-credentials: false
-
-      - name: GCSS config setup
-        uses: ./.github/actions/gcss-config-setup
-        with:
-          checkout-sha: ${{ github.event.pull_request.merge_commit_sha }}
-          #          checkout-token: ${{ secrets.GITHUB_TOKEN }}
-          checkout-token: ${{ steps.generate-token.outputs.token }}
-
-      - name: Setup terraform and run plan
-        uses: ./.github/actions/graformer
-        id: graformer
-        with:
-          tfc-token: ${{ secrets.TFC_TOKEN }}
-          tfc-organization: "GR-OSS"
-          tfc-workspace: ${{ vars.WORKSPACE }}
+          commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
+          gcss_ref: main
+        secrets:
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          tfc_token: ${{ secrets.TFC_TOKEN }}
