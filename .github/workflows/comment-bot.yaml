@@ -1,0 +1,28 @@
+name: Post comment on PR
+
+on:
+  pull_request_target:
+
+jobs:
+  comment-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const body = `📝 **Reviewer Checklist**
+            Please review the changes in this PR.
+            
+            - 🔍 Verify the main code changes.
+            - ⚠️ Check if **workflow files** (e.g., \`.github/workflows/*.yml\`) were modified.
+              - Workflow changes can affect CI/CD and require extra scrutiny.
+              
+            ✅ Approve if everything looks good.`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
