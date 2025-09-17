@@ -21,7 +21,7 @@ jobs:
               
               ✅ If everything looks good, approve the run by:
                 - Looking for the section "This branch is waiting for a deployment approval, promote needs your review" and select "Show environments"
-                - Right below, select "terraform-plan / terraform-plan <#number of deployment>"
+                - Right below, select "terraform-plan / terraform-plan"
                 - In the new screen, select "Review deployments" that opens a pop-up window
                 - In the new pop-up window check the checkbox "promote", add a comment if you see fit, and select "Approve and deploy"
               
