@@ -16,7 +16,7 @@ jobs:
             const body = `👋 Hey there, reviewer!
 
               A **Terraform Plan** will need to run for this PR but it needs approval before proceeding. This is to avoid leaking secrets, and we need you to look for the following before approving:
-                1. 🔍 **No workflow YAML files** (.github/workflows/*.yml) have been changed.
+                1. 🔍 **No workflow YAML files** (\`.github/workflows/*.yml\`) have been changed.
                 2. 🗂️ Only **repository configuration files** have been **added or modified** (no unrelated files touched).
               
               ✅ If everything looks good, approve the run by:
