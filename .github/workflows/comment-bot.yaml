@@ -5,6 +5,6 @@ on:
 
 jobs:
   comment-bot:
-    uses: G-Research/github-terraformer/.github/workflows/comment-bot.yaml@add-pr-comment-bot-reusable-workflow
+    uses: G-Research/github-terraformer/.github/workflows/comment-bot.yaml@main
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
