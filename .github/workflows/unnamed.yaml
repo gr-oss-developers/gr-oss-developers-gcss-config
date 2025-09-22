@@ -1,14 +1,19 @@
-name: Terraform Plan
+name: Unnamed
 
 on:
-  pull_request:
+  workflow_run:
+    workflows: [ "Terraform Plan" ]
+    types:
+      - requested
 
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
-        run: echo Bootstrap
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
 #  terraform-plan:
 #    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@improvements
