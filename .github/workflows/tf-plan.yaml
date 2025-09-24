@@ -1,20 +1,16 @@
 name: Terraform Plan
 
 on:
-  pull_request:
+  workflow_run:
+    workflows: [ "Terraform Plan" ]
 
 jobs:
-  bootstrap:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo
-        run: echo Bootstrap
-
-#  terraform-plan:
-#    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@improvements
-#    with:
-#      commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-#      gcss_ref: improvements
-#    secrets:
-#      gh_token: ${{ secrets.GITHUB_TOKEN }}
-#      tfc_token: ${{ secrets.TFC_TOKEN }}
+  terraform-plan:
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@improvements
+    with:
+      commit_sha: ${{ github.event.workflow_run.head_sha }}
+      gcss_ref: improvements
+    secrets:
+      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      tfc_token: ${{ secrets.TFC_TOKEN }}
