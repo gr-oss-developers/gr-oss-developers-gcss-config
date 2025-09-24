@@ -3,6 +3,8 @@ name: Terraform Plan
 on:
   workflow_run:
     workflows: [ "Bootstrap" ]
+    types:
+      - requested
 
 jobs:
   terraform-plan:
