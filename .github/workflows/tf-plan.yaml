@@ -2,7 +2,7 @@ name: Terraform Plan
 
 on:
   workflow_run:
-    workflows: [ "Terraform Plan" ]
+    workflows: [ "Bootstrap" ]
 
 jobs:
   terraform-plan:
