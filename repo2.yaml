@@ -20,6 +20,10 @@ delete_branch_on_merge: true
 is_template: false
 archived: false
 has_discussions: false
+push_collaborators:
+  - jgiannuzzi
+pust_teams:
+  - foo-bar-team
 topics:
   - example
   - github
