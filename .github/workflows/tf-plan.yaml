@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@fix-check-run-text-overflow
     with:
       commit_sha: ${{ github.event.workflow_run.head_sha }}
-      gcss_ref: main
+      gcss_ref: fix-check-run-text-overflow
       tfc_org: "GR-OSS"
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
