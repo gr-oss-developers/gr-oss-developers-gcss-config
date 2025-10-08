@@ -10,10 +10,10 @@ on:
 jobs:
   promote:
     if: github.event.pull_request.merged == true
-    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@main
+    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@fix-check-run-text-overflow
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: main
+      gcss_ref: fix-check-run-text-overflow
       pr_number: ${{ github.event.pull_request.number }}
       tfc_org: "GR-OSS"
     secrets:
