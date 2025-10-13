@@ -30,6 +30,11 @@ rulesets:
     rules:
       deletion: true
       non_fast_forward: true
+      required_status_checks:
+        required_check:
+          - context: all-required-checks-complete
+            integration_id: 15368
+        strict_required_status_checks_policy: true
     target: branch
     conditions:
       ref_name:
