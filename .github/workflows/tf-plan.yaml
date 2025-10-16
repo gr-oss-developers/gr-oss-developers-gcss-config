@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@test-114
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@test-1144
     with:
       commit_sha: ${{ github.event.workflow_run.head_sha }}
-      gcss_ref: test-114
+      gcss_ref: test-1144
       tfc_org: "GR-OSS"
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
