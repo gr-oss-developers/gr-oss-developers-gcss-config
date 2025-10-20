@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@1136-improve-terraform-plan-error-handling
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@gr-oss-task-1130
     with:
       commit_sha: ${{ github.event.workflow_run.head_sha }}
-      gcss_ref: 1136-improve-terraform-plan-error-handling
+      gcss_ref: gr-oss-task-1130
       tfc_org: "GR-OSS"
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
