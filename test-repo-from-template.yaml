@@ -21,4 +21,4 @@ has_discussions: false
 vulnerability_alerts_enabled: false
 template:
   owner: gr-oss-developers
-  repo: test-template
+  repository: test-template
