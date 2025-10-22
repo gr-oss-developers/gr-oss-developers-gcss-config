@@ -16,6 +16,6 @@ merge_commit_message: PR_TITLE
 web_commit_signoff_required: false
 delete_branch_on_merge: false
 is_template: false
-archived: true
+archived: false
 has_discussions: false
 vulnerability_alerts_enabled: false
