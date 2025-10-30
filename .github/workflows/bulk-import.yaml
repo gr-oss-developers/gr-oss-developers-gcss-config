@@ -5,8 +5,8 @@ on:
 
 jobs:
   bulk-import-repos:
-    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@make-integration-id-optional
+    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@gr-oss-task-1119
     with:
-      gcss_ref: make-integration-id-optional
+      gcss_ref: gr-oss-task-1119
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
