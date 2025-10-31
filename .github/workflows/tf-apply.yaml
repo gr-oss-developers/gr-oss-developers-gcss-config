@@ -7,7 +7,7 @@ on:
       - 'importer_tmp_dir/**'
 
 jobs:
-  terraform-plan:
+  terraform-apply:
     uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@set-public-provider
     with:
       commit_sha: ${{ github.sha }}
