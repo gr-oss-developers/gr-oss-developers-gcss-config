@@ -1,6 +1,6 @@
 visibility: private
 default_branch: main
-has_issues: false
+has_issues: true
 has_projects: true
 has_wiki: true
 has_downloads: true
