@@ -10,10 +10,10 @@ on:
 jobs:
   promote:
     if: github.event.pull_request.merged == true
-    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@v0.0.1
+    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@gr-oss-task-1119
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: v0.0.1
+      gcss_ref: gr-oss-task-1119
       pr_number: ${{ github.event.pull_request.number }}
       tfc_org: "GR-OSS"
     secrets:
