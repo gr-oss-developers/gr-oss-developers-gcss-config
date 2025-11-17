@@ -9,9 +9,9 @@ on:
 
 jobs:
   import-repo:
-    uses: G-Research/github-terraformer/.github/workflows/import.yaml@v0.1.0
+    uses: G-Research/github-terraformer/.github/workflows/import.yaml@gr-oss-1125-resolve-integration-id-to-source-name
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
-      gcss_ref: v0.1.0
+      gcss_ref: gr-oss-1125-resolve-integration-id-to-source-name
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
