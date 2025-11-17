@@ -34,7 +34,6 @@ rulesets:
         required_check:
           - context: all-required-checks-complete
             integration_id: 15368
-            source: GitHub Actions
         strict_required_status_checks_policy: true
     target: branch
     conditions:
