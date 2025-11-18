@@ -10,10 +10,10 @@ on:
 jobs:
   promote:
     if: github.event.pull_request.merged == true
-    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@gr-oss-1125-resolve-integration-id-to-source-name-part-2
+    uses: G-Research/github-terraformer/.github/workflows/promote-imported-configs.yaml@main
     with:
       commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      gcss_ref: gr-oss-1125-resolve-integration-id-to-source-name-part-2
+      gcss_ref: main
       pr_number: ${{ github.event.pull_request.number }}
       tfc_org: "GR-OSS"
     secrets:
