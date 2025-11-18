@@ -9,7 +9,7 @@ jobs:
   drift-check:
     secrets:
       tfc_token: ${{ secrets.TFC_TOKEN }}
-    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@fix-master-branch-bug
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@main
     with:
-      gcss_ref: fix-master-branch-bug
+      gcss_ref: main
       tfc_org: "GR-OSS"

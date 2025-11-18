@@ -9,9 +9,9 @@ on:
 
 jobs:
   import-repo:
-    uses: G-Research/github-terraformer/.github/workflows/import.yaml@fix-master-branch-bug
+    uses: G-Research/github-terraformer/.github/workflows/import.yaml@main
     with:
       repo_name: ${{ github.event.inputs.repo_name }}
-      gcss_ref: fix-master-branch-bug
+      gcss_ref: main
     secrets:
         app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

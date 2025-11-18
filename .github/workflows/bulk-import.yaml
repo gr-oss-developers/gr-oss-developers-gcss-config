@@ -5,8 +5,8 @@ on:
 
 jobs:
   bulk-import-repos:
-    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@fix-master-branch-bug
+    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@main
     with:
-      gcss_ref: fix-master-branch-bug
+      gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
