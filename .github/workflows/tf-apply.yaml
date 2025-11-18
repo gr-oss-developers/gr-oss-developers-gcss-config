@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-apply:
-    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@v0.1.1
+    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@gr-oss-1125-resolve-integration-id-to-source-name-part-2
     with:
       commit_sha: ${{ github.sha }}
-      gcss_ref: v0.1.1
+      gcss_ref: gr-oss-1125-resolve-integration-id-to-source-name-part-2
       tfc_org: "GR-OSS"
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}

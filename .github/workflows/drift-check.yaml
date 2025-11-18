@@ -9,7 +9,7 @@ jobs:
   drift-check:
     secrets:
       tfc_token: ${{ secrets.TFC_TOKEN }}
-    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@v0.1.1
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@gr-oss-1125-resolve-integration-id-to-source-name-part-2
     with:
-      gcss_ref: v0.1.1
+      gcss_ref: gr-oss-1125-resolve-integration-id-to-source-name-part-2
       tfc_org: "GR-OSS"
