@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@main
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@fix-master-branch-bug
     with:
       commit_sha: ${{ github.event.workflow_run.head_sha }}
-      gcss_ref: main
+      gcss_ref: fix-master-branch-bug
       tfc_org: "GR-OSS"
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
