@@ -1,2 +1,11 @@
 # List of Github applications used to map bypass actors to
-apps: []
+apps:
+  - app_owner: gr-oss-developers
+    app_id: 1367298
+    app_slug: gross-developers-terra-manager
+  - app_owner: gr-oss-developers
+    app_id: 1561195
+    app_slug: gcs-bypasser-grossdevelopers
+  - app_owner: gr-oss-developers
+    app_id: 2319340
+    app_slug: gr-oss-developers-test
