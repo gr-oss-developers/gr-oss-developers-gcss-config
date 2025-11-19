@@ -25,17 +25,24 @@ topics:
   - github
   - terraform
 rulesets:
-  - enforcement: active
+  - id: 10166029
+    enforcement: active
     name: test
     rules:
       deletion: true
       non_fast_forward: true
+      required_status_checks:
+        required_check:
+          - context: test
+            integration_id: 1367298
+            source: app/gr-oss-developers/gross-developers-terra-manager
+        strict_required_status_checks_policy: true
     target: branch
     conditions:
       ref_name:
         include:
           - ~DEFAULT_BRANCH
-vulnerability_alerts_enabled: false
+vulnerability_alerts_enabled: true
 branch_protections_v4:
   - pattern: gh-pages
     allows_deletions: false
