@@ -33,7 +33,6 @@ rulesets:
       required_status_checks:
         required_check:
           - context: test
-            integration_id: 1367298
             source: app/gr-oss-developers/gross-developers-terra-manager
         strict_required_status_checks_policy: true
     target: branch
