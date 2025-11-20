@@ -25,8 +25,7 @@ topics:
   - github
   - terraform
 rulesets:
-  - id: 10166029
-    enforcement: active
+  - enforcement: active
     name: test
     rules:
       deletion: true

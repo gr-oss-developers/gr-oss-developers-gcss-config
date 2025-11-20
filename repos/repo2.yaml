@@ -33,6 +33,7 @@ rulesets:
       required_status_checks:
         required_check:
           - context: all-required-checks-complete
+            integration_id: 15368
             source: GitHub Actions
         strict_required_status_checks_policy: true
     target: branch
@@ -40,7 +41,7 @@ rulesets:
       ref_name:
         include:
           - ~DEFAULT_BRANCH
-vulnerability_alerts_enabled: false
+vulnerability_alerts_enabled: true
 branch_protections_v4:
   - pattern: gh-pages
     allows_deletions: false
