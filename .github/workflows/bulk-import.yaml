@@ -5,8 +5,8 @@ on:
 
 jobs:
   bulk-import-repos:
-    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@v0.1.1-patch1
+    uses: G-Research/github-terraformer/.github/workflows/bulk-import.yaml@v0.2.1
     with:
-      gcss_ref: v0.1.1-patch1
+      gcss_ref: v0.2.1
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
