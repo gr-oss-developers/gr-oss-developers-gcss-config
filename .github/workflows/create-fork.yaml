@@ -16,7 +16,7 @@ on:
 
 jobs:
   create-fork:
-    uses: G-Research/github-terraformer/.github/workflows/create-fork.yaml@v0.2.1
+    uses: G-Research/github-terraformer/.github/workflows/create-fork.yaml@upgrade-terraform-terraform-provider-version
     with:
       upstream_repo: ${{ github.event.inputs.upstream_repo }}
       fork_name: ${{ github.event.inputs.fork_name }}

@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-apply:
-    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@v0.2.1
+    uses: G-Research/github-terraformer/.github/workflows/tf-apply.yaml@upgrade-terraform-terraform-provider-version
     with:
       commit_sha: ${{ github.sha }}
-      gcss_ref: v0.2.1
+      gcss_ref: upgrade-terraform-terraform-provider-version
       tfc_org: "GR-OSS"
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}

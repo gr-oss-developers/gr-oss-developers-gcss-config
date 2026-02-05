@@ -8,10 +8,10 @@ on:
 
 jobs:
   terraform-plan:
-    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@v0.2.1
+    uses: G-Research/github-terraformer/.github/workflows/tf-plan.yaml@upgrade-terraform-terraform-provider-version
     with:
       commit_sha: ${{ github.event.workflow_run.head_sha }}
-      gcss_ref: v0.2.1
+      gcss_ref: upgrade-terraform-terraform-provider-version
       tfc_org: "GR-OSS"
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

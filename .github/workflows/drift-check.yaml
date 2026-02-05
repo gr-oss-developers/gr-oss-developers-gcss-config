@@ -9,7 +9,7 @@ jobs:
   drift-check:
     secrets:
       tfc_token: ${{ secrets.TFC_TOKEN }}
-    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@v0.2.1
+    uses: G-Research/github-terraformer/.github/workflows/drift-check.yaml@upgrade-terraform-terraform-provider-version
     with:
-      gcss_ref: v0.2.1
+      gcss_ref: upgrade-terraform-terraform-provider-version
       tfc_org: "GR-OSS"
