@@ -1,0 +1,81 @@
+description: Frontend for magic-trace; forks https://ui.perfetto.dev
+visibility: public
+homepage_url: https://magic-trace.org
+default_branch: rebased-v49-jane-public-patches
+has_issues: false
+has_projects: true
+has_wiki: false
+has_downloads: false
+allow_merge_commit: true
+allow_rebase_merge: true
+allow_squash_merge: true
+allow_auto_merge: false
+allow_update_branch: false
+squash_merge_commit_title: COMMIT_OR_PR_TITLE
+squash_merge_commit_message: COMMIT_MESSAGES
+merge_commit_title: MERGE_MESSAGE
+merge_commit_message: PR_TITLE
+web_commit_signoff_required: false
+delete_branch_on_merge: false
+is_template: false
+archived: false
+has_discussions: false
+rulesets:
+    - id: 12789281
+      enforcement: active
+      name: Protect all gr branches except default
+      rules:
+        deletion: true
+        non_fast_forward: true
+        pull_request:
+            dismiss_stale_reviews_on_push: true
+            require_code_owner_review: false
+            require_last_push_approval: true
+            required_approving_review_count: 1
+            required_review_thread_resolution: false
+      target: branch
+      bypass_actors:
+        - name: repository-admin-role
+          bypass_mode: always
+      conditions:
+        ref_name:
+            exclude:
+                - ~DEFAULT_BRANCH
+            include:
+                - refs/heads/*-gr
+    - id: 13036329
+      enforcement: active
+      name: Protect all tags
+      rules:
+        deletion: true
+        non_fast_forward: true
+        update: true
+        update_allows_fetch_and_merge: false
+      target: tag
+      conditions:
+        ref_name:
+            include:
+                - refs/tags/v*
+    - id: 12788992
+      enforcement: active
+      name: Protect default branch
+      rules:
+        deletion: true
+        non_fast_forward: true
+        update: true
+        update_allows_fetch_and_merge: false
+      target: branch
+      conditions:
+        ref_name:
+            include:
+                - ~DEFAULT_BRANCH
+vulnerability_alerts_enabled: true
+environments:
+    - environment: docker-hub
+      can_admins_bypass: false
+      deployment_policy:
+        policy_type: selected_branches_and_tags
+        tag_patterns:
+            - v*
+        tag_policy_ids:
+            v*: 43404868

@@ -1,0 +1,46 @@
+description: Phase 3 test - repository created with a non-main default branch
+visibility: public
+default_branch: master
+has_issues: true
+has_projects: false
+has_wiki: false
+has_downloads: false
+allow_merge_commit: true
+allow_rebase_merge: false
+allow_squash_merge: true
+allow_auto_merge: false
+allow_update_branch: false
+squash_merge_commit_title: COMMIT_OR_PR_TITLE
+squash_merge_commit_message: COMMIT_MESSAGES
+merge_commit_title: MERGE_MESSAGE
+merge_commit_message: PR_TITLE
+web_commit_signoff_required: false
+delete_branch_on_merge: true
+is_template: false
+archived: false
+has_discussions: false
+vulnerability_alerts_enabled: true
+environments:
+    - environment: production
+      wait_timer: 5
+      can_admins_bypass: false
+      prevent_self_review: true
+      reviewers:
+        users:
+            - dev-milos
+      deployment_policy:
+        policy_type: selected_branches_and_tags
+        branch_patterns:
+            - master
+            - release/*
+        tag_patterns:
+            - v*
+        branch_policy_ids:
+            master: 57065306
+            release/*: 57065309
+        tag_policy_ids:
+            v*: 57065311
+    - environment: staging
+      can_admins_bypass: true
+      deployment_policy:
+        policy_type: protected_branches
