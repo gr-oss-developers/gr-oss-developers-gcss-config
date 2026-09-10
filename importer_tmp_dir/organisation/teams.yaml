@@ -1,0 +1,31 @@
+teams:
+    - name: R3 Space Team
+      slug: r3-space-team
+      description: Team whose name is not its slug
+      visibility: visible
+      notifications: true
+    - name: dev-team
+      slug: dev-team
+      description: dev team
+      visibility: visible
+      notifications: true
+    - name: foo-bar-team
+      slug: foo-bar-team
+      description: A big foo bar team, now secret
+      visibility: secret
+      notifications: false
+    - name: platform_core
+      slug: platform_core
+      description: Underscore in the name, to exercise real slug capture
+      visibility: visible
+      notifications: true
+    - name: release_engineering
+      slug: release_engineering
+      description: Added by config, never existed on GitHub
+      visibility: visible
+      notifications: true
+    - name: security-review
+      slug: security-review
+      description: No longer secret
+      visibility: visible
+      notifications: true

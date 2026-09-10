@@ -1,0 +1,19 @@
+members:
+    - username: dev-milos
+      role: owner
+      teams:
+        - name: R3 Space Team
+          role: maintainer
+        - name: foo-bar-team
+          role: maintainer
+        - name: platform_core
+          role: maintainer
+        - name: release_engineering
+          role: maintainer
+    - username: mladjan-gadzic
+      role: member
+      teams:
+        - name: dev-team
+          role: maintainer
+    - username: pavlovic-ivan
+      role: owner
