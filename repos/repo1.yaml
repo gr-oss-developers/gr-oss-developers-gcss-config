@@ -1,4 +1,4 @@
-description: Description changed for demo purposes
+description: "PR80 test - success path check (safe to revert)"
 visibility: public
 homepage_url: ""
 default_branch: main
