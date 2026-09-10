@@ -9,10 +9,10 @@ on:
 
 jobs:
   decommission:
-    uses: G-Research/github-terraformer/.github/workflows/decommission.yaml@test/rc-cycle
+    uses: G-Research/github-terraformer/.github/workflows/decommission.yaml@main
     with:
       repo: ${{ github.event.inputs.repo }}
-      gcss_ref: test/rc-cycle
+      gcss_ref: main
       tfc_org: "GR-OSS"
     secrets:
       tfc_token: ${{ secrets.TFC_TOKEN }}

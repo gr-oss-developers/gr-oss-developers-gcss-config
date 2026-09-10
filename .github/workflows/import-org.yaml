@@ -5,8 +5,8 @@ on:
 
 jobs:
   import-org:
-    uses: G-Research/github-terraformer/.github/workflows/import-org.yaml@test/rc-cycle
+    uses: G-Research/github-terraformer/.github/workflows/import-org.yaml@main
     with:
-      gcss_ref: test/rc-cycle
+      gcss_ref: main
     secrets:
       app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
